@@ -10,6 +10,8 @@
 #include <list>
 #include <deque>
 #include <iostream>
+#include <map>
+#include <set>
 
 using namespace std;
 
@@ -54,9 +56,19 @@ int main()
 	//map таким образом, чтобы он содержал в качестве ключа букву, а в качестве значения 
 	//отсортированную по алфавиту совокупность слов (string), начинающихся с этой буквы
 	
-	//С помощью range-based for распечатайте содержимое, например: A: any, apple, away
-	{
+    map<char, set<string>> myMap = {
+        {'A', {"any", "apple", "away"}},
+        {'P', {"pineapple", "pear"}},
+        {'H', {"home", "hold"}}
+    };
 
+	//С помощью range-based for распечатайте содержимое, например: A: any, apple, away
+    for (const auto &mapPair: myMap){
+        cout << mapPair.first << ":";
+        for (const string &word: mapPair.second){
+            cout << ' ' << word;
+        }
+        cout << '\n';
 	}
 
     /////////////////////////////////////////////////////////////////////
