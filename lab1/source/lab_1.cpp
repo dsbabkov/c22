@@ -9,6 +9,9 @@
 #include <vector>
 #include <list>
 #include <deque>
+#include <iostream>
+
+using namespace std;
 
 int main()
 {
@@ -16,27 +19,34 @@ int main()
 
 	//Задание 1. 
 	{
-		enum months { January, February, March/*...*/ };
-		enum weekDays { Monday, Tuesday /*...*/ };
+        enum class months: unsigned char { January, February, March/*...*/ };
+        enum class weekDays { Monday, Tuesday /*...*/ };
 
-		months m = January;
+        months m = months::January;
 		//а) уберите проблемы
-		if (m == Monday) { /*...*/ }
+        if (m == static_cast<months>(weekDays::Monday)) { /*...*/ }
 		//б) оптимизируйте использование памяти
-		months year[] = { January, February, March };
+        months year[] = { months::January, months::February, months::March };
 		size_t n = sizeof(year); //???
-
 	}
 
 
 	//////////////////////////////////////////////////////////////////////////////////
 	//Задание 2. Создайте и с помощью списка инициализации заполните значениями вектор с
 	//элементами - string
+    vector<string> stringList = {
+        "my",
+        "1st",
+        "string",
+        "list"
+    };
+
 	//С помощью range-based for преобразуйте все буквы в верхний регистр
 	//а остальные символы должны остаться неизменными
-	{
-
-
+    for (string &line: stringList){
+        for (char &ch: line){
+            ch = toupper(ch);
+        }
 	}
 
 	/////////////////////////////////////////////////////////////////////
