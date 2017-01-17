@@ -23,5 +23,5 @@ CppApplication {
         qbs.install: true
     }
 
-    cpp.cxxLanguageVersion: "c++14"
+    cpp.cxxLanguageVersion: "c++1z"
 }

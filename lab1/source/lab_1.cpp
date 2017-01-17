@@ -13,6 +13,7 @@
 #include "IncAnyCont.h"
 #include "NegateAll.h"
 #include "PrintAnyCont.h"
+#include "SumCont.h"
 #include <map>
 #include <set>
 
@@ -155,13 +156,13 @@ int main()
 		std::vector<int> v{ 1,2,3,4 };
 		std::list<double> l{ 1.1, 2.2, 3.3, 4.4, 5.5 };
 
-		//??? = SumCont(v, l);
+        auto sum1 = SumCont(v, l);
 		
 
 		std::list<int> ll{ 1, 2, 3, 4, 5, 6, 7, 8 };
 		double ar[] = { 1.1, 2.2, 3.3, 4.4, 5.5 };
-		//??? = SumContT(ar, ll);
-		
+        auto sum2 = SumCont(ar, ll);
+
 	}
 
 
