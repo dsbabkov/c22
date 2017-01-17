@@ -9,6 +9,7 @@
 #include <vector>
 #include <list>
 #include <deque>
+#include "NegateAll.h"
 #include "PrintAnyCont.h"
 #include <map>
 #include <set>
@@ -99,15 +100,13 @@ int main()
 
 	{
 		std::vector<double> vd{ 1.1,2.2,3.3 };
-		//NegateAll(vd);
+        NegateAll(vd);
 
 		std::list<std::string> ls{ "aBc", "Qwerty", "n12" };
-		//NegateAll(ls);
+//        NegateAll(ls);
 
 		int ar[]{ 1, 2, 3 };
-		//NegateAll(ar);
-		
-
+        NegateAll(ar);
 	}
 
 
