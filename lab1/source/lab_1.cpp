@@ -106,7 +106,7 @@ int main()
         NegateAll(vd);
 
 		std::list<std::string> ls{ "aBc", "Qwerty", "n12" };
-//        NegateAll(ls);
+        NegateAll(ls);
 
 		int ar[]{ 1, 2, 3 };
         NegateAll(ar);
