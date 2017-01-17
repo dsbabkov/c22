@@ -9,7 +9,7 @@
 #include <vector>
 #include <list>
 #include <deque>
-#include <iostream>
+#include "PrintAnyCont.h"
 #include <map>
 #include <set>
 
@@ -76,16 +76,16 @@ int main()
 
 	{
 		std::vector<double> vd = { 1.1,2.2,3.3 };
-		//PrintAnyCont(vd);
+        PrintAnyCont(vd);
 
 		std::string s("abc");
-		//PrintAnyCont(s);
+        PrintAnyCont(s);
 
 		int ar[] = { 1, 2, 3 };
-		//PrintAnyCont(ar);
+        PrintAnyCont(ar);
 
 		std::initializer_list<int> il{ 3,4,5 };
-		//PrintAnyCont(il);
+        PrintAnyCont(il);
 
 		
 	}

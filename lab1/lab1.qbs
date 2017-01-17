@@ -8,6 +8,7 @@ CppApplication {
         name: "Source"
         prefix: "source/"
         files: "*.cpp"
+        cpp.includePaths: ["include"]
     }
 
     Group {
