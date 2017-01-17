@@ -9,6 +9,7 @@
 #include <vector>
 #include <list>
 #include <deque>
+#include "IncAnyCont.h"
 #include "NegateAll.h"
 #include "PrintAnyCont.h"
 #include <map>
@@ -109,23 +110,18 @@ int main()
         NegateAll(ar);
 	}
 
-
-
-
 	///Задание 4а. создать функцию для инкремента элементов последовательностей, заданных ниже
 
 	{
 		std::vector<double> vd = { 1.1, 2.2, 3.3 };
-		//IncAnyCont(vd);
+        IncAnyCont(vd);
 
 
 		int ar[] = { 1, 2, 3 };
-		//IncAnyCont(ar);
+        IncAnyCont(ar);
 
 		std::string s("123");
-		//IncAnyCont(s);
-
-
+        IncAnyCont(s);
 	}
 
 	//////////////////////////////////////////////////////////////////////////////////
