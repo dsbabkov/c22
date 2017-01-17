@@ -192,8 +192,10 @@ int main()
 	//  Использовать лямбда функцию
 	{
 		char s[] = "Hello World!";
-
-
+        size_t count = 0;
+        std::for_each(cbegin(s), cend(s),
+                      [&count](char c){if ('A' <= c && c <= 'Z'){++count;}});
+        cout << count << '\n';
 	}
 
 
