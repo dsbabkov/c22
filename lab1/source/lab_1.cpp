@@ -13,6 +13,7 @@
 #include "IncAnyCont.h"
 #include "NegateAll.h"
 #include "PrintAnyCont.h"
+#include "Separate.h"
 #include "SumCont.h"
 #include <map>
 #include <set>
@@ -181,8 +182,7 @@ int main()
 		std::vector<int> v{ 1,2,3,4,5 };
 		std::list<int> l; //сюда четные
 		std::deque<int> d; //а сюда нечетные
-		//Separate(v, l, d, <условие>);
-		
+        Separate(v, l, d, [](int value)->bool{return value % 2;});
 	}
 
 
