@@ -9,6 +9,7 @@
 #include <vector>
 #include <list>
 #include <deque>
+#include "absSort.h"
 #include "IncAnyCont.h"
 #include "NegateAll.h"
 #include "PrintAnyCont.h"
@@ -130,12 +131,11 @@ int main()
 	//а для задания условия - лямбда-функцию
 	{
 		std::vector<double> vd = { -3.3,  2.2, -1.1 };
-		//absSort(vd);
+        absSort(vd);
 
 
 		int ar[] = { -3, 2, -1 };
-		//absSort(ar);
-
+        absSort(ar);
 	}
 
 	//////////////////////////////////////////////////////////////////////////////////
