@@ -15,6 +15,8 @@
 #include "PrintAnyCont.h"
 #include "Separate.h"
 #include "SumCont.h"
+#include "UniqueVector.h"
+#include "RagedUniqueVector.h"
 #include <map>
 #include <set>
 
@@ -209,7 +211,28 @@ int main()
 	//Реализуйте метод удаления любого количества значений (значения могут повторяться)
 	//Реализуйте метод сортировки, который будет принимать в качестве параметра признак по возрастанию / по убыванию
 
-	
+    UniqueVector<int> vec = {1, 2, 2, 2, 1, 4, 3, 6, 5};
+    vec << initializer_list<int>({3, 1, 8})
+        << initializer_list<int>({9, 10, 0})
+        << initializer_list<int>({7});
+
+    vec.remove({3, 4, 5});
+
+    vec.sort();
+    vec.sort(decltype(vec)::Order::DescendingOrder);
+    vec.sort();
+
+    RangedUniqueVector<int> vec2 ({3, 7});
+    vec2 << initializer_list<int>({3, 1, 8})
+         << initializer_list<int>({9, 10, 0})
+         << initializer_list<int>({7});
+
+    vec2.remove({3, 4, 5});
+
+    vec2.sort();
+    vec2.sort(decltype(vec2)::Order::DescendingOrder);
+    vec2.sort();
+
 
 
 	
