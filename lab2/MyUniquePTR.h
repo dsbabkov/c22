@@ -7,7 +7,12 @@ public:
         : p_{p}
     {}
 
-    MyUniquePTR (MyUniquePTR && other){
+    MyUniquePTR (MyUniquePTR && other)
+        : p_{other.p_}
+    {
+        other.p_ = {};
+    }
+    MyUniquePTR &operator = (MyUniquePTR &&other){
         delete p_;
         p_ = other.p_;
         other.p_ = {};

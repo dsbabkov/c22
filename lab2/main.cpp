@@ -49,11 +49,18 @@ int main()
         std::string a = *p1;
         //MyUniquePTR<A> p2=p1; //здесь компилятор должен выдавать ошибку
         MyUniquePTR<std::string> p3(new std::string("test2"));
+        MyUniquePTR<std::string> p4(std::move(p3));
         //p3 = p2; //и здесь компилятор должен выдавать ошибку
-        std::vector< MyUniquePTR<std::string>> v = {makeUnique<std::string>("blablabla") }; //как проинициализировать???
+        std::vector< MyUniquePTR<std::string>> v; //как проинициализировать???
+        for (const std::string &line: {"my", "unique", "lines"}){
+            v.push_back(makeUnique(line));
+        }
         std::list< MyUniquePTR<std::string>> l;
-        std::copy(v.cbegin(), v.cend(), std::back_inserter(l));
         //как скопировать из v в l ???
+        for (const auto &value: v){
+            l.push_back(makeUnique(*value));
+        }
+        std::cout << std::endl;
     }
 
     return 0;
