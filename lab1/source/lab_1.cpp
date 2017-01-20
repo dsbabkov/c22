@@ -19,6 +19,7 @@
 #include "RagedUniqueVector.h"
 #include <map>
 #include <set>
+#include "StringEnum.h"
 
 using namespace std;
 
@@ -272,19 +273,22 @@ int main()
 	
 
 	{
+        enum class COLORS : char {RED, GREEN, BLUE};
+
+        DeclareEnumStrings<COLORS>( {{"red", COLORS::RED}, {"green", COLORS::GREEN}, {"blue", COLORS::BLUE}} );
+
 	//Например:
-/*
+
 		COLORS c1;
 		try {
 			c1 = stringToEnum<COLORS>("blue");
 		}
-		catch (...)
+        catch (const std::exception &e)
 		{
-		//...
+            std::cerr << e.what() << std::endl;
 		}
 
 	
 		auto Str = enumToString(c1);
-*/
 	}
 }
