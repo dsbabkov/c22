@@ -53,12 +53,12 @@ int main()
         //p3 = p2; //и здесь компилятор должен выдавать ошибку
         std::vector< MyUniquePTR<std::string>> v; //как проинициализировать???
         for (const std::string &line: {"my", "unique", "lines"}){
-            v.push_back(makeUnique(line));
+            v.emplace_back(makeUnique(line));
         }
         std::list< MyUniquePTR<std::string>> l;
         //как скопировать из v в l ???
         for (const auto &value: v){
-            l.push_back(makeUnique(*value));
+            l.emplace_back(makeUnique(*value));
         }
         std::cout << std::endl;
     }
