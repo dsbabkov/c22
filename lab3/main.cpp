@@ -6,6 +6,7 @@
 #include <memory>
 #include <vector>
 #include "literals.h"
+#include "Range.h"
 
 using namespace std;
 
@@ -117,6 +118,8 @@ int main()
 	//				Для проверки достаточно создать встроенный массив с размерностью, вычисляемой
 	//				посредством constexpr-метода:
 	{
+        int test[makeRange(9).validate(36)];
+        test[0] = 1;
 	}
 
 
