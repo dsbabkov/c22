@@ -8,6 +8,10 @@
 
 using namespace std;
 
+constexpr unsigned factorial(unsigned n){
+    return n ? n * factorial(n - 1) : 1;
+}
+
 int main()
 {
 	
@@ -34,8 +38,6 @@ int main()
 	//		- если параметр рекурсивной constexpr- функции - это константа, компилятор вычислит результат
 	//			на этапе компиляции
 
-
-
 	//Проверьте тот факт, что компилятор вычисляет значение на этапе компиляции (если в качестве
 	//				параметра используется константа, известная компилятору на этапе компиляции).
 	//				Для проверки достаточно создать встроенный массив с размерностью, вычисляемой
@@ -45,16 +47,16 @@ int main()
 		//int ar[factorial(3)];
 
 		//или
-		//constexpr int n = factorial(5);
-		//int ar1[n];
+        constexpr int n = factorial(5);
+        int ar1[n];
 
 		//попробуйте:
-		//int m = 7;
+        int m = 7;
 		//constexpr int n1 = factorial(m);
 		//int ar1[n1];
 		
 		//а так?
-		//int n2 = factorial(m);
+        int n2 = factorial(m);
 	}
 
 
