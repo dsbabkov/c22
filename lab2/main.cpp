@@ -60,6 +60,9 @@ int main()
         for (const auto &value: v){
             l.emplace_back(makeUnique(*value));
         }
+
+        std::transform(v.cbegin(), v.cend(), std::back_inserter(l), [](const auto &ptr){return makeUnique(*ptr);});
+
         std::cout << std::endl;
     }
 
