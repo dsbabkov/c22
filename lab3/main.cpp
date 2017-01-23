@@ -6,20 +6,20 @@
 #include <memory>
 #include <vector>
 
-
 using namespace std;
-
-
 
 int main()
 {
 	
-	//Задание 1. Сырые строковые литералы (Raw String Literals)
-	//Выведите строку, например: my name is "Marina"
-	//а) без использования Raw String Literals
-	//б) посредством Raw String Literals
-	//в) добавьте разделители (Delimeter)
     {
+        //Задание 1. Сырые строковые литералы (Raw String Literals)
+        //Выведите строку, например: my name is "Marina"
+        //а) без использования Raw String Literals
+        std::string a = "my name is \"Marina\"";
+        //б) посредством Raw String Literals
+        std::string b = R"(my name is "Marina")";
+        //в) добавьте разделители (Delimeter)
+        std::string c = R"GG(my name is "Marina")GG";
     }
 
 
