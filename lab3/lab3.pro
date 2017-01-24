@@ -7,4 +7,5 @@ SOURCES += main.cpp
 
 HEADERS += \
     literals.h \
-    Range.h
+    Range.h \
+    ConstBit.h

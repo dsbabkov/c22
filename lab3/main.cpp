@@ -7,6 +7,7 @@
 #include <vector>
 #include "literals.h"
 #include "Range.h"
+#include "ConstBit.h"
 
 using namespace std;
 
@@ -132,7 +133,14 @@ int main()
 		//использование констант на этапе компиляции
 
 	{
-	}
+        int test[ConstBit(0b10).bit(1) + 1];
+        int test2[ConstBit(0b10).bit(0) + 1];
+        int test3[ConstBit(0b10).bit(3) + 1];
+        test[0] = test2[0] = test3[0] = 0;
+        std::cout << sizeof(test) << ' '
+                  << sizeof(test2) << ' '
+                  << sizeof(test3) << '\n';
+    }
 
 	//////////////////////////////////////////////////////////////////////////////////////////////
 	//Задание 5. unique_ptr
