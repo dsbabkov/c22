@@ -150,7 +150,12 @@ int main()
 		{
 			std::vector<std::string*> v = { new std::string("aa"), new std::string("bb"), new std::string("cc") };
 			//Распечатайте все строки
-		
+            for (const string *str: v){
+                std::cout << *str << ' ';
+            }
+            std::cout << '\n';
+
+            for_each(v.begin(), v.end(), [](string *s){delete s;});
 
 			//???
 		} //???
