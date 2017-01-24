@@ -5,6 +5,7 @@
 #include <iterator>
 #include <memory>
 #include <vector>
+#include <list>
 #include "literals.h"
 #include "Range.h"
 #include "ConstBit.h"
@@ -234,9 +235,14 @@ int main()
 			//Посредством алгоритмя copy() скопируйте элементы вектора в пустой список с элементами 
 			//того же типа
 			//Подсказка: перемещающие итераторы и шаблон std::make_move_iterator
-
-
-
+            using StrPtr = std::unique_ptr<std::string>;
+            std::vector<StrPtr> v;
+            for (const char *str: {"my", "unique", "strings"}){
+                v.emplace_back(std::make_unique<std::string>(str));
+            }
+            std::list<StrPtr> l;
+            std::copy(make_move_iterator(v.begin()), make_move_iterator(v.end()), back_inserter(l));
+            std::cout << l.size();
 		}
 
 
