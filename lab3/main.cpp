@@ -8,6 +8,7 @@
 #include "literals.h"
 #include "Range.h"
 #include "ConstBit.h"
+#include <functional>
 
 using namespace std;
 
@@ -212,6 +213,8 @@ int main()
             }
 		}
 
+
+        std::string *outStrs[3]={};
 		{//5.e - массивы динамических объектов и пользовательская delete-функция (функтор)
 		 //Задан стековый массив указателей на динамически созданные объекты
 		 //Создайте unique_ptr для такого массива
@@ -219,8 +222,12 @@ int main()
 		 //освобождения памяти
 
 			std::string* arStrPtr[] = { new std::string("aa"), new std::string("bb"), new std::string("cc") };
+            std::copy(std::cbegin(arStrPtr), std::cend(arStrPtr), outStrs);
+            constexpr size_t arrSize = std::cend(arStrPtr) - std::cbegin(arStrPtr); // std::size
 
-
+            auto delStr = [](std::string *ptr){delete ptr;};
+            auto delAll = [arrSize, delStr](std::string **arr){std::for_each(arr, arr + arrSize, delStr);};
+            std::unique_ptr<std::string* [], decltype(delAll)> ptr(arStrPtr, delAll);
 		}
 
 		{//5.f Создайте и заполните вектор, содержащий unique_ptr для указателей на std::string
