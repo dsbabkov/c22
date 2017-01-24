@@ -169,8 +169,15 @@ int main()
 		 //
 			
 		{
+            using StringPtr = std::unique_ptr<std::string>;
+            std::vector<StringPtr> v;
+            for (const char *str: {"aa", "bb", "cc"}){
+                v.emplace_back(new std::string(str));
+            }
 		 //Распечатайте все строки
 
+            for_each(v.cbegin(), v.cend(), [](const StringPtr &str){cout << *str << ' ';});
+            std::cout << '\n';
 
 		 //??? Уничтожение динамически созданных объектов?
 		} //???
