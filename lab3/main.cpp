@@ -169,7 +169,7 @@ int main()
 		 //
 			
 		{
-            using StringPtr = std::unique_ptr<std::string>;
+            using StringPtr = std::unique_ptr<const std::string>;
             std::vector<StringPtr> v;
             for (const char *str: {"aa", "bb", "cc"}){
                 v.emplace_back(new std::string(str));
@@ -184,9 +184,17 @@ int main()
 
 		{//5.c - дополните задание 5.b добавьте возможность изменять хранящиеся строки
 		 //следующим образом (например, добавить указанный суффикс: "AAA" -> "AAA_1")  
-		
+            using StringPtr = std::unique_ptr<std::string>;
+            std::vector<StringPtr> v;
+            for (const char *str: {"aa", "bb", "cc"}){
+                v.emplace_back(new std::string(str));
+            }
 
-	
+            std::for_each(v.begin(), v.end(), [](StringPtr &str){*str += "_1";});
+
+            for_each(v.cbegin(), v.cend(), [](const StringPtr &str){cout << *str << ' ';});
+            std::cout << '\n';
+
 
 		}
 
