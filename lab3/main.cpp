@@ -205,7 +205,11 @@ int main()
 		 //С помощью unique_ptr::operator[] заполните обернутый массив значениями
 		 //Когда происходит освобождения памяти?
 
-
+            constexpr size_t arrSize = 9;
+            std::unique_ptr<int[]> ptr(new int[arrSize]);
+            for (size_t i = 0; i < arrSize; ++i){
+                ptr[i] = i;
+            }
 		}
 
 		{//5.e - массивы динамических объектов и пользовательская delete-функция (функтор)
