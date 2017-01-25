@@ -10,6 +10,7 @@
 #include "Range.h"
 #include "ConstBit.h"
 #include <functional>
+#include <cstdio>
 
 using namespace std;
 
@@ -261,16 +262,39 @@ int main()
 	//в. Последний владелец указателя должен закрыть файл
 
 	//Подсказка: имитировать порядок записи можно с помощью функции rand()
-	/*
-	{
 
+	{
 	//"писатели":
 	//Создать writer1, writer2
 
+        class Writter{
+            std::shared_ptr<FILE> file_;
+            const char *data_ = nullptr;
+        public:
+            Writter(std::shared_ptr<FILE> file, const char *data)
+                : file_{file}, data_{data}
+            {}
+//            void write() const{
+//                if (!data_){return;}
+//                if (!file_){
+//                    file_.reset(fopen("shared_ptr_file", "w"));
+//                    if (!(file_)){return;}
+//                }
+//                fputs(data_, file_.get());
+//            }
+        };
 
 	//например, источники данных:
+        auto fileDeleter = [](FILE *file){fclose(file);};
+        std::shared_ptr<FILE> file(0, fileDeleter);
+
 	char ar1[] = "Writer1";
 	char ar2[] = "Writer2";
+
+    char *writters[2] = {ar1, ar2};
+    if (rand() & 1){
+        std::swap(writters[0], writters[1]);
+    }
 
 	//заданное число итераций случайным образом позволяем одному из "писателей" записать в файл
 	//свою строчку
@@ -280,7 +304,6 @@ int main()
 
 	}//закрытие файла???
 
-	*/
 
 	
 }
