@@ -285,7 +285,7 @@ int main()
         };
 
 	//например, источники данных:
-        auto fileDeleter = [](FILE *file){fclose(file);};
+        auto fileDeleter = [](FILE *file){if(file){fclose(file);}};
         std::shared_ptr<FILE> file(0, fileDeleter);
 
 	char ar1[] = "Writer1";
@@ -304,8 +304,7 @@ int main()
 
 
 
-	}//закрытие файла???
-
-
-	
+    std::cout << "before close\n";
+	}//закрытие файла???	
+    std::cout << "after close\n";
 }
