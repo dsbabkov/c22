@@ -11,6 +11,17 @@
 #include <regex>
 #include <cmath>
 
+template <typename T>
+void MyPrint(const T &value){
+    std::cout << value << '\n';
+}
+
+template <typename T, typename... Args>
+void MyPrint(const T &value, const Args &... args ){
+    std::cout << value << ' ';
+    MyPrint(args...);
+}
+
 
 int main()
 {
@@ -62,7 +73,10 @@ int main()
 	//Задание 2 variadic template - функция
 	//Реализуйте функцию, которая умеет печатать любое количество параметров любого типа,
 	//Например: MyPrint(4,8.8, A(1),std::string("dfg") );
+
+
 	{
+        MyPrint(4,8.8,std::string("dfg"));
 	}
 
 	////////////////////////////////////////////////////////////////////////////////
