@@ -10,6 +10,9 @@
 #include <iterator> 
 #include <regex>
 #include <cmath>
+#include "Book.h"
+#include <set>
+#include "Human.h"
 
 template <typename T>
 void MyPrint(const T &value){
@@ -126,7 +129,8 @@ int main()
 	//////////////////////////////////////////////////////////////////////////////////
 	//Задание 4 std::tuple
 	//Создайте класс book (автор, заглавие, год издания...). 
-	//Создайте библиотеку таким образом, чтобы книги хранились в упорядоченном виде.
+
+    //Создайте библиотеку таким образом, чтобы книги хранились в упорядоченном виде.
 	//Чтобы упорядочить совокупность книжек, нужно сформировать условие сравнения, то есть
 	//перегрузить, например operator<. При реализации оператора хочется сформировать условие
 	//с учетом всех данных!!! 
@@ -134,7 +138,25 @@ int main()
 	//Подсказка: Для упорядочения удобно использовать шаблон std::tuple,
 	//так как для std::tuple перегружены операторы ==,!=,<,<=,>,>=
 	//,которые сравнивают два кортежа лексиграфически (в порядке следования членов).
-	
+
+    class Compare{
+        std::tuple<std::string, std::string, unsigned> toTuple(const Book &book) const {
+            return {book.author(), book.title(), book.year()};
+        }
+
+    public:
+        bool operator() (const Book &b1, const Book &b2){
+            return toTuple(b1) < toTuple(b2);
+        }
+    };
+
+    static const std::multiset<Book, Compare> library = {
+        {"asfga", "fff", 1900},
+        {"asfga", "ads", 1900},
+        {"ggg", "fff", 1900}
+    };
+
+
 
 	//Для проверки распечатайте библиотеку
 
@@ -161,7 +183,29 @@ int main()
 	//Ввести возможность распечатать генеалогическое дерево для указанного индивидума
 
 	{
-		//История должна с кого-то начинаться => "Жили-были дед да баба, например, Адам и Ева"
+        auto Adam = Human::child("Adam");
+        auto Eve = Human::child("Eve");
+
+        auto Kain = Human::child("Kain", Eve, Adam);
+        auto Avel = Human::child("Avel", Eve, Adam);
+
+        decltype(Kain) children[] = {
+            Human::child("Somebody1", Kain),
+            Human::child("Somebody2", Kain),
+            Human::child("Somebody3", Kain),
+            Human::child("Somebody4", Kain),
+            Human::child("Somebody5", Kain),
+            Human::child("Somebody6", Avel),
+            Human::child("Somebody7", Avel),
+            Human::child("Somebody8", Avel),
+            Human::child("Somebody9", Avel)
+        };
+
+
+        Adam->printTree();
+        Eve->printTree();
+
+        //История должна с кого-то начинаться => "Жили-были дед да баба, например, Адам и Ева"
 		//(то есть на самом деле два деда и две бабы):
 
 
@@ -180,4 +224,3 @@ int main()
 
 
 }
-
