@@ -274,14 +274,14 @@ int main()
             Writter(std::shared_ptr<FILE> file, const char *data)
                 : file_{file}, data_{data}
             {}
-//            void write() const{
+            void write() const{
 //                if (!data_){return;}
 //                if (!file_){
 //                    file_.reset(fopen("shared_ptr_file", "w"));
 //                    if (!(file_)){return;}
 //                }
 //                fputs(data_, file_.get());
-//            }
+            }
         };
 
 	//например, источники данных:
@@ -291,10 +291,12 @@ int main()
 	char ar1[] = "Writer1";
 	char ar2[] = "Writer2";
 
-    char *writters[2] = {ar1, ar2};
-    if (rand() & 1){
-        std::swap(writters[0], writters[1]);
+    Writter writters [] = {(file, ar1), (file, ar2)};
+
+    for (int i = 0; i < 10; ++i){
+        writters[rand() & 1].write();
     }
+
 
 	//заданное число итераций случайным образом позволяем одному из "писателей" записать в файл
 	//свою строчку
