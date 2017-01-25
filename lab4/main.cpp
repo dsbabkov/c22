@@ -94,8 +94,21 @@ int main()
 	//Для хранения значка операции и соответствующего ему действия логично использовать
 	//std::map<char, ???> 
 	{
+        struct Mult{
+            constexpr double operator ()(double v1, double v2) const{
+                return v1 * v2;
+            }
+        };
 
-
+        using BinaryOperator = std::function<double(double, double)>;
+        static const std::map<char, BinaryOperator> operators = {
+            {'+', std::plus<double>()},
+            {'-', std::minus<double>()},
+            {'*', Mult()},
+            {'/', [](double v1, double v2){return v1 / v2;}},
+            {'^', pow}
+        };
+        std::cout << operators.at('^')(5, 3) << '\n';
 	}
 
 
