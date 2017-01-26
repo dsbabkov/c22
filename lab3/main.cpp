@@ -295,9 +295,14 @@ int main()
     Writter writters[] = {{file, ar1}, {file, ar2}};
 
     for (int i = 0; i < 10; ++i){
-        writters[rand() & 1].write();
+//        writters[rand() & 1].write();
     }
 
+    std::shared_ptr<FILE> writter1(fopen("shared_ptr_file", "w"), fileDeleter);
+    std::shared_ptr<FILE> writter2(writter1);
+
+    fputs(ar2, writter2.get());
+    fputs(ar1, writter1.get());
 
 	//заданное число итераций случайным образом позволяем одному из "писателей" записать в файл
 	//свою строчку
