@@ -16,6 +16,16 @@ constexpr int operator "" _b(const char *str, unsigned long count){
                 0;
 }
 
+constexpr int accumulateBinLiteral(const char *str, int base = 0){
+    return *str ?
+                accumulateBinLiteral(str + 1, (base << 1) + charToBin(*str)) :
+                base;
+}
+
+constexpr int operator "" _b(const char *str){
+    return accumulateBinLiteral(str);
+}
+
 std::string operator"" _toBinStr(unsigned long long value){
     if (!value){
         return "0b0";

@@ -78,6 +78,7 @@ int main()
 	//логично использовать пользовательский литерал с единственным параметром - const char*
     {
         constexpr int a = "100000000"_b;
+        constexpr int a2 = 100000000_b;
         std::cout << (a == 0b100000000) << '\n';
     }
 
@@ -291,7 +292,7 @@ int main()
 	char ar1[] = "Writer1";
 	char ar2[] = "Writer2";
 
-    Writter writters [] = {{file, ar1}, {file, ar2}};
+    Writter writters[] = {{file, ar1}, {file, ar2}};
 
     for (int i = 0; i < 10; ++i){
         writters[rand() & 1].write();
