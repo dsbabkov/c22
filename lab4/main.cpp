@@ -46,31 +46,43 @@ int main()
 	//					(для преобразования удобно использовать С++11 - std::stoi())
 
 	{
+        const std::string userData = "-5349";
+        std::regex re("(-|\\+)[[:digit:]]+");
+        std::cout << std::regex_match(userData, re) << '\n';
 
 	}
 	// 1b ООбеспечить прием от пользователя целых значений в шестнадцатеричной форме.
 	{
-
+        const std::string userData = "0xFF20FF";
+        std::regex re("(0x)?[[:digit:]A-Fa-f]+");
+        std::cout << std::regex_match(userData, re) << '\n';
 	}
 
 
 	// 1с Обеспечить прием от пользователя плавающих значений в форматах
 	//      -2.33 или +1.23e+06 или 0.245E10
 	{
-
+        const std::string userData = "+1.23e-2";
+        std::regex re("(\\+|-)?[[:digit:]]+\\.?[[:digit:]]*((E|e)(\\+|-)?[[:digit:]]+)?"); //
+        std::cout << std::regex_match(userData, re) << '\n';
 	}
 
 	// 1d Требуется узнать - есть ли хотя бы одна десятичная цифра в строке
 	{
-	
-
-	}
+        const std::string userData = "some1 data";
+        std::regex re(".*[[:digit:]].*");
+        std::cout << std::regex_search(userData, re) << '\n';
+    }
 
 	
 	//1e Требуется найти все десятичные цифры в строке
 	{
-
-
+        const std::string userData = "s1ome2 da3ta4";
+        std::regex re("[[:digit:]]");
+        std::transform(std::sregex_iterator (userData.cbegin(), userData.cend(), re),
+                       std::sregex_iterator(),
+                       std::ostream_iterator<std::string>(std::cout, "\n"),
+                       [](const std::smatch &match){return match.str();});
 	}
 	////////////////////////////////////////////////////////////////////////////////
 	//Задание 2 variadic template - функция
